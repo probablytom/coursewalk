@@ -1,5 +1,6 @@
 import CommonMark as cm
 from glob import glob
+from random import random
 import json
 
 
@@ -22,7 +23,10 @@ class Node:
 
     def __dictionary_representation(self):
         return {'name': self.node_id.split('/')[-1],
-                'note': self.note_parsed,
+                'id': str(random() * 100000),
+                'data': {
+                    'note': self.note_parsed
+                },
                 'children': [child.__dictionary_representation()
                              for child in self.children]
                 }
